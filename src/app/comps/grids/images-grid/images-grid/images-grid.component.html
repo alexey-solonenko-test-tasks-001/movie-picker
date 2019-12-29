@@ -1,0 +1,10 @@
+<p>images-grid works!</p>
+<div *ngIf="!loadingThumbs">
+    <ul>
+        <li *ngFor="let thumb of thumbs">
+            <app-single-thumb [thumb]='thumb' [annexComponentType]='annexComponentType'></app-single-thumb>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="loadingThumbs"> LOADING IMAGE THUMBS ...</div>
