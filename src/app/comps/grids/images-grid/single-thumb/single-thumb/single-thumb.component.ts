@@ -6,7 +6,7 @@ import { ImgGridThumbAnnexDirective } from './img-grid-thumb-annex.directive';
 @Component({
   selector: 'app-single-thumb',
   templateUrl: './single-thumb.component.html',
-  styleUrls: ['./single-thumb.component.sass']
+  styleUrls: ['./single-thumb.component.scss']
 })
 export class SingleThumbComponent implements OnInit {
 

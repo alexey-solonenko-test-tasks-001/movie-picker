@@ -7,11 +7,12 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-live-search',
   templateUrl: './live-search.component.html',
-  styleUrls: ['./live-search.component.sass']
+  styleUrls: ['./live-search.component.scss']
 })
 export class LiveSearchComponent implements OnInit {
 
   @Input() compId:string;
+  term: string= '';
   items:Array<LiveSearchItem>;
   private searchTerms= new Subject<string>();
 
@@ -20,6 +21,7 @@ export class LiveSearchComponent implements OnInit {
   ) { }
 
     search(term: string):void{
+      this.term = term;
       this.searchTerms.next(term);
     }
 
@@ -32,7 +34,7 @@ export class LiveSearchComponent implements OnInit {
         this.items = items;
         let conf = this.liveSearchService.getConfig(this.compId);
         this.items.forEach((item, idx) => {
-          this.items[idx].link = conf.detailUrl + '/' + item.id;
+          this.items[idx].link = conf.followUpUrl + '/' + item.id;
         });
     });
   }

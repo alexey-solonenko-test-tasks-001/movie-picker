@@ -1,3 +1,5 @@
-<p>movie-picker-thumb-annex works!</p>
-<div >{{ thumb.genres[0] }}</div>
-<a routerLink=thumb.detailUrl>find out more </a>
+<ul>
+    <li *ngFor="let genre of thumb.genres">
+        {{ genre }}
+    </li>
+</ul>

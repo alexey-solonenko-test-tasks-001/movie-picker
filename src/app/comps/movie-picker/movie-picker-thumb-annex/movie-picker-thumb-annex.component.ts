@@ -5,7 +5,7 @@ import { ThumbAnnex } from '../../grids/images-grid/single-thumb/single-thumb/th
 @Component({
   selector: 'app-movie-picker-thumb-annex',
   templateUrl: './movie-picker-thumb-annex.component.html',
-  styleUrls: ['./movie-picker-thumb-annex.component.sass']
+  styleUrls: ['./movie-picker-thumb-annex.component.scss']
 })
 export class MoviePickerThumbAnnexComponent implements OnInit, ThumbAnnex {
 

@@ -16,14 +16,15 @@ export class LiveSearchService {
     private http: HttpClient
   ) { }
 
-  searchItems(term:string, confId:string):Observable<LiveSearchItem[]>{
-    if(!term.trim()){
+  searchItems(term: string, confId: string): Observable<LiveSearchItem[]> {
+    if (!term.trim()) {
       return of([]);
     }
     let conf = this.getConfig(confId);
-    if(!conf) return of([]);
-
-    return this.http.get<LiveSearchItem[]>(conf.apiUrl+term);
+    if (!conf) return of([]);
+    let url = conf.queryBuilder.getQueryURL(this.constructor.name);
+    
+    return this.http.get<LiveSearchItem[]>(url.toString());
   }
 
   /* TODO to redo with an abstract and generics? */
@@ -34,7 +35,7 @@ export class LiveSearchService {
   getConfig(id: string): LiveSearchConfig {
     if (this.configs.has(id)) return this.configs.get(id);
     /* TODO to setup typescript to allow multiple return types */
-    else return {apiUrl: ''};
+    else return { followUpUrl: '' };
   }
 
 }

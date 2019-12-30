@@ -14,6 +14,16 @@ export class InMemoryDataService implements InMemoryDbService {
     /* to provide the list of genres */
     return ({
       movies: moviesMockData,
+      genres: (() => {
+        let allGenres = [];
+        moviesMockData.forEach(m => {
+          if (m.genres && Array.isArray(m.genres)) {
+            allGenres = allGenres.concat(m.genres);
+          }
+        });
+        /* return only distinct/unque genres */
+        return (Array.from(new Set(allGenres)));
+      })(),
     });
   }
   /*

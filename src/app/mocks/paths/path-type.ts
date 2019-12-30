@@ -23,6 +23,7 @@ export interface Paths {
     },
     api: {
         getMovies: Path,
+        getGenres: Path,
         searchMovies: Path,
     }
 };

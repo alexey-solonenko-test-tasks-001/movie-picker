@@ -7,7 +7,7 @@ import { MoviesService } from 'src/app/services/movies/movies.service';
 @Component({
   selector: 'app-movie-picker-details',
   templateUrl: './movie-picker-details.component.html',
-  styleUrls: ['./movie-picker-details.component.sass']
+  styleUrls: ['./movie-picker-details.component.scss']
 })
 export class MoviePickerDetailsComponent implements OnInit {
 

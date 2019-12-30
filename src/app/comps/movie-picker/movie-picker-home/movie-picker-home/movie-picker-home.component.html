@@ -1,2 +1,14 @@
 <app-live-search [compId]="liveSearchid"></app-live-search>
+<ng-select 
+#genresSelector 
+
+bindLabel='Genres'
+placeHolder='Select genre(s)'
+appendTo='body'
+[disabled]='true'
+[multiple]='true'
+[(ngModel)]='selectedGenres'>
+<ng-option [value]="opt" *ngFor="let opt of genres">{{ opt }}</ng-option>
+</ng-select>
+<button (click)='search()'>Search</button>
 <app-images-grid [compId]="imagesGridId" ></app-images-grid>

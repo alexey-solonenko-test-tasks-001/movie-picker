@@ -21,6 +21,9 @@ export const paths: Paths = {
         getMovies: {
             linkPath: 'api/movies',
         },
+        getGenres:{
+          linkPath: 'api/genres',  
+        },
         searchMovies: {
             linkPath: 'api/movies?name='
         }

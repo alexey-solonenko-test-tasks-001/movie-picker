@@ -14,8 +14,12 @@ export class ImagesGridService {
   constructor(private http: HttpClient) { }
 
   /* TODO to check if a genre filter can be added here */
-  getThumbs(apiUrl: string): Observable<Array<ImgThumbModel>> {
-    return this.http.get<ImgThumbModel[]>(apiUrl);
+  getThumbs(compId: string): Observable<Array<ImgThumbModel>> {
+    let conf = this.getConfig(compId);
+    if(!conf) return of(null);
+    let url = conf.queryBuilder.getQueryURL(this.constructor.name);
+
+    return this.http.get<ImgThumbModel[]>(url.toString());
   }
   
   getThumb(confId: string, thumbId: number): Observable<ImgThumbModel>{

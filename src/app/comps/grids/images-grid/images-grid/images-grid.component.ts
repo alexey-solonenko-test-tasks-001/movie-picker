@@ -6,7 +6,7 @@ import { ThumbAnnex } from '../single-thumb/single-thumb/thumb-annex';
 @Component({
   selector: 'app-images-grid',
   templateUrl: './images-grid.component.html',
-  styleUrls: ['./images-grid.component.sass']
+  styleUrls: ['./images-grid.component.scss']
 })
 export class ImagesGridComponent implements OnInit {
 
@@ -26,8 +26,9 @@ export class ImagesGridComponent implements OnInit {
   getThumbs(): void {
     this.loadingThumbs = true;
     let conf = this.imgGridService.getConfig(this.compId);
-    this.imgGridService.getThumbs(conf.thumbsUrl).subscribe(thumbs => {
-      this.annexComponentType = conf.annexTemplate;
+    this.imgGridService.getThumbs(this.compId).subscribe(thumbs => {
+      console.log(thumbs);
+      this.annexComponentType = conf.annexType;
       this.thumbs = thumbs;
       this.thumbs.forEach((t, idx) => {
         this.thumbs[idx].img = (conf.imgHostUrl ? conf.imgHostUrl : '') + t.img;
