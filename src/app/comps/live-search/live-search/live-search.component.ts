@@ -12,7 +12,6 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 export class LiveSearchComponent implements OnInit {
 
   @Input() compId:string;
-  term: string= '';
   items:Array<LiveSearchItem>;
   private searchTerms= new Subject<string>();
 
@@ -21,7 +20,8 @@ export class LiveSearchComponent implements OnInit {
   ) { }
 
     search(term: string):void{
-      this.term = term;
+      let conf = this.liveSearchService.getConfig(this.compId);
+      conf.updater.updateTerm(conf.queryBuilderClientId,term);
       this.searchTerms.next(term);
     }
 

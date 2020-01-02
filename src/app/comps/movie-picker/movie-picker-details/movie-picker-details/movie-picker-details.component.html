@@ -7,7 +7,12 @@
                 <h2>{{ movie.name | uppercase }}</h2>
             </div>
             <div class='col-12 col-md-4'>
-                <img class='image-stretch col-12 col-md-4' [src]='movie.img'>
+                <img [ngClass]='(loading ? "d-none" :"")' class='image-stretch col-12 col-md-4' [src]='movie.img'>
+                <div [ngClass]='(loading ? "" : "d-none")' class='movie-picker-details__loader'>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
             <div class='col-12 col-md-8'>
                 <div class='row'>

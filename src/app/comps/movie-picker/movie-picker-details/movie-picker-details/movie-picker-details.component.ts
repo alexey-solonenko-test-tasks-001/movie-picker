@@ -31,9 +31,11 @@ export class MoviePickerDetailsComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     /* TODO to user router to level-up the movies component params */
     let movie = await this.http.get<Movie>(paths.api.getMovies.linkPath + '/' + id).toPromise();
+    let img = movie.img;
+    movie.img = '';
     this.movie = movie;
     // @ts-ignore: Unreachable code error
-    let res = await this.http.get<Blob>(movie.img, { responseType: 'blob' }).toPromise();
+    let res = await this.http.get<Blob>(img, { responseType: 'blob' }).toPromise();
     const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     await wait(Math.random() * 2000 + 350);
     // @ts-ignore: Unreachable code error
