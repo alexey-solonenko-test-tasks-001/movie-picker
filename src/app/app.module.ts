@@ -1,5 +1,6 @@
 /* Vendor */
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -33,16 +34,16 @@ import { FormsModule } from '@angular/forms';
     MoviePickerThumbAnnexComponent,
     ImgGridThumbAnnexDirective,
     LiveSearchComponent,
-    MoviePickerGenresComponent,
-    
+    MoviePickerGenresComponent,    
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     // environment.production ? HttpClientInMemoryWebApiModule.forRoot(MoviesDataService, { delay: 400}) : [],
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000, dataEncapsulation: false}),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000, dataEncapsulation: false, passThruUnknownUrl: true}),
     NgSelectModule,
     
   ],

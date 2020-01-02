@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef, Type } from '@angular/core';
+import { Component, OnInit, Input, Type } from '@angular/core';
 import { ImagesGridService } from 'src/app/services/images-grid/images-grid.service';
 import { ImgThumbModel } from 'src/app/models/app/comps/img.thumb.model';
 import { ThumbAnnex } from '../single-thumb/single-thumb/thumb-annex';
@@ -31,8 +31,10 @@ export class ImagesGridComponent implements OnInit {
       this.annexComponentType = conf.annexType;
       this.thumbs = thumbs;
       this.thumbs.forEach((t, idx) => {
-        this.thumbs[idx].img = (conf.imgHostUrl ? conf.imgHostUrl : '') + t.img;
         this.thumbs[idx].detailUrl = conf.detailsUrl + '/' + t.id;
+      });
+      this.thumbs = this.thumbs.sort((a,b) => {
+        return (a.name.localeCompare(b.name));
       });
       this.loadingThumbs = false;
     });

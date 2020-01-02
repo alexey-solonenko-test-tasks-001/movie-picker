@@ -1,10 +1,8 @@
-<p>images-grid works!</p>
-<div *ngIf="!loadingThumbs">
-    <ul>
-        <li *ngFor="let thumb of thumbs">
-            <app-single-thumb [thumb]='thumb' [annexComponentType]='annexComponentType'></app-single-thumb>
-        </li>
-    </ul>
+<div class='col-12' *ngIf="!loadingThumbs">
+    <div class='row'>
+        <app-single-thumb class='col-12 col-md-4' *ngFor="let thumb of thumbs" [thumb]='thumb' [annexComponentType]='annexComponentType'>
+        </app-single-thumb>
+    </div>
 </div>
 
-<div *ngIf="loadingThumbs"> LOADING IMAGE THUMBS ...</div>
+<div class='col-12' *ngIf="loadingThumbs"> LOADING IMAGE THUMBS ...</div>

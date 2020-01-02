@@ -1,31 +1,71 @@
-import { Component, OnInit, ContentChildren, Input, TemplateRef, Type, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, Input, Type, ViewChild, ComponentFactoryResolver, HostBinding } from '@angular/core';
 import { ThumbAnnex } from './thumb-annex';
 import { ImgThumbModel } from 'src/app/models/app/comps/img.thumb.model';
 import { ImgGridThumbAnnexDirective } from './img-grid-thumb-annex.directive';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import { useAnimation, transition, trigger, state, style, animate } from '@angular/animations';
+import { zoomInAnimation } from './single-thumb-img-animation';
 
 @Component({
   selector: 'app-single-thumb',
   templateUrl: './single-thumb.component.html',
-  styleUrls: ['./single-thumb.component.scss']
+  styleUrls: ['./single-thumb.component.scss'],
+  animations: [
+    trigger('showHide', [
+      state('hidden', style({
+        transform: 'scale(0.1)',
+      })),
+      state('shown', style({
+        transform: 'scale(1)'
+      })),
+      transition('hidden <=> shown', [
+         //useAnimation(zoomInAnimation),
+        animate('0.75s'),
+      ]),
+    ])
+  ]
 })
 export class SingleThumbComponent implements OnInit {
 
-  @Input() thumb: ImgThumbModel;
   @Input() annexComponentType: Type<ThumbAnnex>;
   @ViewChild(ImgGridThumbAnnexDirective, { static: true }) annexHost: ImgGridThumbAnnexDirective;
+  imgSrc;
+  loading: boolean = true;
+  thumbLoader;
+  @Input() thumb: ImgThumbModel;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
 
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private http: HttpClient,
+    private sanitizer: DomSanitizer,
+  ) {
   }
 
   ngOnInit() {
+    /*  */
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.annexComponentType);
-    const viewContainerRef = this.annexHost.viewContainerRef;
-    viewContainerRef.clear();
+    const annexHostRef = this.annexHost.viewContainerRef;
+    annexHostRef.clear();
 
-    const componentRef = viewContainerRef.createComponent(componentFactory);
-    (componentRef.instance).thumb = this.thumb;
-    this.thumb.img = this.thumb.img;
+    const annexHostCompRef = annexHostRef.createComponent(componentFactory);
+    (annexHostCompRef.instance).thumb = this.thumb;
+    const headers = new HttpHeaders({
+
+    });
+
+    (async () => {
+      let res = await this.http.get<Blob>(this.thumb.img, { responseType: 'blob' }).toPromise();
+      const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+      await wait(Math.random() * 2000 + 350);
+      let urlCreator = window.URL || window.webkitURL;
+      let objUrl = urlCreator.createObjectURL(res);
+      this.imgSrc = this.sanitizer.bypassSecurityTrustUrl(objUrl);
+      this.loading = false;
+    })();
+
+
   }
 
 }

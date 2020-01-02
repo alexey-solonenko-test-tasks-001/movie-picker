@@ -1,1 +1,26 @@
-<p>movie-picker-details works!</p>
+<div class='container'>
+    <div class='row'>
+        <!-- <div class='col-12'> -->
+        <div class='movie-picker-details__wrapper'>
+            <!-- <div class='row'> -->
+            <div class='col-12'>
+                <h2>{{ movie.name | uppercase }}</h2>
+            </div>
+            <div class='col-12 col-md-4'>
+                <img class='image-stretch col-12 col-md-4' [src]='movie.img'>
+            </div>
+            <div class='col-12 col-md-8'>
+                <div class='row'>
+                    <div class='col-12'>
+                        <p>{{ movie.description }}</p>
+                    </div>
+                    <div class='col-12'>
+                        <app-movie-picker-thumb-annex [thumb]='movie'></app-movie-picker-thumb-annex>
+                    </div>
+                </div>
+            </div>
+            <!-- </div>
+        </div> -->
+        </div>
+    </div>
+</div>

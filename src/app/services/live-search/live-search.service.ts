@@ -11,7 +11,6 @@ export class LiveSearchService {
 
   configs: Map<string, LiveSearchConfig> = new Map();
 
-
   constructor(
     private http: HttpClient
   ) { }
@@ -22,19 +21,20 @@ export class LiveSearchService {
     }
     let conf = this.getConfig(confId);
     if (!conf) return of([]);
-    let url = conf.queryBuilder.getQueryURL(this.constructor.name);
-    
+    if (conf.updater) {
+      conf.updater.updateTerm(conf.queryBuilderClientId, term);
+    }
+    let url = conf.queryBuilder.getQueryURL(this.constructor.name, conf.queryBuilderClientId);
+
     return this.http.get<LiveSearchItem[]>(url.toString());
   }
 
-  /* TODO to redo with an abstract and generics? */
   addConfig(id: string, conf: LiveSearchConfig) {
     this.configs.set(id, conf);
   }
 
   getConfig(id: string): LiveSearchConfig {
     if (this.configs.has(id)) return this.configs.get(id);
-    /* TODO to setup typescript to allow multiple return types */
     else return { followUpUrl: '' };
   }
 

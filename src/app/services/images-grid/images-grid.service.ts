@@ -13,18 +13,18 @@ export class ImagesGridService {
 
   constructor(private http: HttpClient) { }
 
-  /* TODO to check if a genre filter can be added here */
   getThumbs(compId: string): Observable<Array<ImgThumbModel>> {
     let conf = this.getConfig(compId);
     if(!conf) return of(null);
-    let url = conf.queryBuilder.getQueryURL(this.constructor.name);
+    let url = conf.queryBuilder.getQueryURL(this.constructor.name, conf.queryBuilderClientId);
 
     return this.http.get<ImgThumbModel[]>(url.toString());
   }
   
   getThumb(confId: string, thumbId: number): Observable<ImgThumbModel>{
       if(!this.configs.has(confId)) return of(null);
-      let url = this.configs.get(confId).thumbsUrl;
+      let conf = this.configs.get(confId);
+      let url = conf.queryBuilder.getQueryURL(this.constructor.name, conf.queryBuilderClientId).toString();
       url +=  '/' + thumbId;
       return this.http.get<ImgThumbModel>(url);
   }
@@ -35,8 +35,7 @@ export class ImagesGridService {
 
   getConfig(id: string): ImagesGridConfig {
     if (this.configs.has(id)) return this.configs.get(id);
-    /* TODO to setup typescript to allow multiple return types */
-    else return {thumbsUrl: ''};
+    else return {};
   }
 
 }

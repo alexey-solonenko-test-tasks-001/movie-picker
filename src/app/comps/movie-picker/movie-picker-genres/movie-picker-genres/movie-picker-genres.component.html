@@ -1,1 +1,9 @@
-<p>movie-picker-genres works!</p>
+<div class='row'>
+    <label for='#genresSelector' class='col-12 col-md-4'>Select genre(s)</label>
+    <div class='col-12 col-md-8'>
+        <ng-select #genresSelector bindLabel='Genres' placeHolder='Select genre(s)' appendTo='body'
+            [disabled]='selectorDisabled' [multiple]='true' (change)='updateGenres($event)' [(ngModel)]='selectedGenres'>
+            <ng-option [value]="opt" *ngFor="let opt of genres">{{ opt }}</ng-option>
+        </ng-select>
+    </div>
+</div>

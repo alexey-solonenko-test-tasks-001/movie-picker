@@ -1,0 +1,60 @@
+
+
+@mixin renderSingleGrid($key, $settings) {
+    $i : 1;
+    $tmp: map-get($settings,'maxWidths');
+    $maxWidth: map-get($tmp,$key);
+    $marginInPercent: map-get($settings,'marginInt') / $maxWidth * 100 * 2;
+
+    @while $i <= map-get($settings, "columns") {
+        $mediaKey : $key+'-';
+        @if $key == 'base' {
+            $mediaKey: '';
+        } 
+
+        .col-#{$mediaKey}#{$i} {
+            float: left;
+            position: relative;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+            // width: 100% * $i / map-get($settings,"columns") - $marginInPercent;
+            width: 100% * $i / map-get($settings,"columns");
+            &:after{
+                display:table;
+                clear:both;
+                content:'';
+            }
+        }
+        $i: $i + 1;
+    }
+}
+
+@mixin renderGridCols($settings) {
+    $breakpoints: map-get($settings, "breakpoints");
+    @each $key, $bpoint in $breakpoints{
+        @include media($bpoint){
+            @include renderSingleGrid($key, $settings);
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    padding-right: map-get($gridSettings, "margin");
+    padding-left: map-get($gridSettings, "margin");
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    margin-right: -#{map-get($gridSettings, "margin")};
+    margin-left: -#{map-get($gridSettings, "margin")};
+    display:flex;
+    flex-wrap:wrap;
+  }
+
+
+
+
+@include renderGridCols($gridSettings);

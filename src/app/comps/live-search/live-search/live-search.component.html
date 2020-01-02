@@ -1,13 +1,13 @@
-<div id="search-component">
-    <h4><label for="live-search">Search Movie</label></h4>
-  
-    <input #searchBox id="live-search" (input)="search(searchBox.value)" />
-  
-    <ul class="search-result">
-      <li *ngFor="let item of items" >
-        <a routerLink="/{{item.link}}">
-          {{item.name}}
-        </a>
-      </li>
-    </ul>
-  </div>
+<div class='row'>
+  <label for="live-search" class='col-12 col-md-4'>Search Movie</label>
+
+  <input #searchBox id="live-search" class='col-12 col-md-8' (input)="search(searchBox.value)" />
+
+  <ul class="search-result col-12">
+    <li *ngFor="let item of items">
+      <a routerLink="/{{item.link}}">
+        {{item.name}}
+      </a>
+    </li>
+  </ul>
+</div>

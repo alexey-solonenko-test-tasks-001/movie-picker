@@ -1,7 +1,23 @@
-<div>
-    <h4>{{ thumb.name }}</h4>
-    <img src='{{ thumb.img }}' style='width:200px;height:100px;'>
-    <p>{{ thumb.description }}</p>
-    <a routerLink='{{ thumb.detailUrl }}'>Find Out More</a>
-    <ng-template appImgGridThumbAnnex></ng-template>
+<div class='row'>
+    <div class='images-grid-thumb__wrapper'>
+        <div class='col-12'>
+            <h5>{{ thumb.name }}</h5>
+        </div>
+        <div class='col-12'>
+            <ng-container *ngTemplateOutlet='img'></ng-container>
+        </div>
+        <div class='col-12'>
+            <ng-template appImgGridThumbAnnex></ng-template>
+        </div>
+        <div class='col-12'>
+            <a routerLink='{{ thumb.detailUrl }}'>Find Out More</a>
+        </div>
+    </div>
 </div>
+
+<ng-template #img>
+    <a [ngClass]='(loading ? "d-none" : "")' [routerLink]="thumb.detailUrl" >
+        <img [@showHide]='loading ? "hidden" : "shown" '  class='image-stretch' [src]='imgSrc' >
+    </a>
+    <div [ngClass]='(loading ? "" : "d-none")' class='images-grid-thumb__loader'><div></div><div></div><div></div></div>
+</ng-template>

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LiveSearchItem } from 'src/app/models/app/comps/live.search.item';
 import { LiveSearchService } from 'src/app/services/live-search/live-search.service';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Component({

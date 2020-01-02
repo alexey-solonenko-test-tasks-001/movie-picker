@@ -1,0 +1,28 @@
+
+.movie-picker-thumb-annex {
+    &__rate-border {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        border-radius: 9999px;
+        background-color: lightgray;
+
+        &:hover {
+            color: gray;
+        }
+    }
+
+    &__rate {
+        color:black;
+        text-align: center;
+        &:hover {
+            color: white;
+        }
+    }
+
+    &__genre {
+        padding:0.25rem;
+        color:blue;
+    }
+}

@@ -1,0 +1,7 @@
+@import '../../../../../scss/global_styles.scss';
+
+.movie-picker-details {
+    &__wrapper {
+        @extend %base-wrapper-v01;
+    }
+}

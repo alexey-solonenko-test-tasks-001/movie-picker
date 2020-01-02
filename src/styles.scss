@@ -1,5 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+/* Vendor */
 @import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+/* Partials */
+@import './scss/variables.scss';
+@import './scss/mixins.scss';
+
+/* Common styles */
+@import './scss/display.scss';
+@import './scss/global_styles.scss';
+@import './scss/grid.scss';
+
+
+/* */
 
 @mixin test(){
     color:red;

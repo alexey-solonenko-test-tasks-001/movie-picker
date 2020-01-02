@@ -1,5 +1,11 @@
-<ul>
-    <li *ngFor="let genre of thumb.genres">
-        {{ genre }}
-    </li>
-</ul>
+<div class='row'>
+    <div class='col-12'><span class='movie-picker-thumb-annex__genre' *ngFor='let genre of thumb.genres'>{{ genre }}</span></div>
+    <div class='col-5 col-md-3'>
+        <div class='movie-picker-thumb-annex__rate-border'><span
+                class='movie-picker-thumb-annex__rate'>{{ thumb.rate }}</span></div>
+    </div>
+    <div class='col-2 col-md-4'></div>
+    <div class='col-5 col-md-4 text-right'>
+        {{ thumb.length }}
+    </div>
+</div>
