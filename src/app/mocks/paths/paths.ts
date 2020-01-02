@@ -9,10 +9,17 @@ export const paths: Paths = {
             }
 
         },
+        moviesList:{
+            path: {
+                routePath:'list',
+                linkPath:'/list',
+                i18n:'Movies List',
+            }
+        },
         moviesSingleMovie: {
             path: {
-                routePath: 'movies/:id',
-                linkPath:'/movies',
+                routePath: 'detail/:id',
+                linkPath:'/detail',
                 i18n: 'Find Out More'
             }
         }

@@ -2,43 +2,45 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
-** Table of Contents **
+**Table of Contents**
 
-**[Usage](#app-usage)**
+**[App Usage](#app-usage)**
 
-[Deployed App](#app-usage)
+[Deployed App](#deployed-app)
 
-[Local Prod](#app-usage-local-prod)
+[Local Prod](#local-prod)
 
-[Build & Deploy](#app-usage-build-deploy)
+[Build & Deploy](#build-&-deploy)
 
-**[Fulfilment report](report)**
+[Development Server](#development-server)
 
-[Starter pack](#report-starter)
+**[Fulfilment report](#fulfilment-report)**
 
-[Mocksk and Asssets](#report-mocks-assets)
+[Starter pack](#starter-pack)
 
-[Features](#report-features)
+[Mocksk and Asssets](#mocks-and-assets)
 
-[Angular Features](#report-features)
+[Features](#features)
+
+[Angular Features](#angular-features)
 
 
 ---
 
-## [](#app-usage) APP USAGE
+## APP USAGE
 
-### [](#app-usage-deployed-app)Deployed App
+### Deployed App
 
-Deployed on [`heroku`](https://asolonenko-movie-picker.herokuapp.com/)
+Deployed on <a href="https://asolonenko-movie-picker.herokuapp.com/" target="_blank">`heroku`</a>
 
-### [](#app-usage-local-prod)Local Prod
+### Local Prod
 
 [`node serve`](https://www.npmjs.com/package/serve) is already installed as `movie-picker` package dependency 
 
 `cd` to a cloned repo
 
 Run `serve -s dist/movie-picker`. _Node serve_ will launch an app and suggest you a link to open in your browser.
-### [](#app-usage-build-deploy)Build & Deploy
+### Build & Deploy
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/movie-picker` directory. Use the `--prod` flag for a production build.
 
 Run `git push heroku master` to deploy to `heroku` server.
@@ -49,35 +51,35 @@ In case of typescript errors, use:
 ```
 Before each error-line.
 
-### [](#app-usage-development-server)Development Server
+### Development Server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 
 ---
 
-## [](#report) FULFILMENT REPORT
-[Starter pack](#report-starter)
+## FULFILMENT REPORT
+[Starter pack](#starter-pack)
 
-[Mocksk and Asssets](#report-mocks-assets)
+[Mocksk and Asssets](#mocks-and-assets)
 
-[Features](#report-features)
+[Features](#features)
 
-[Angular Features](#report-features)
+[Angular Features](#angular-features)
 
 ---
-### [Starter pack](#report-starter)
+### Starter pack
 - have never built an `Angular` app, only used simple template directive `*ngIf` / `*ngFor` to promote API-to-front-end wiring-up.
 - started with `ng new`
 - never used TypeScript to build an app (used Java background).
 - work is based on https://angular.io/guide and SO.
 
-### [Mocks and Assets](#report-mocks-assets)
+### Mocks and Assets
 
 - [Angular In-Memory-Web-Api](https://angular.io/guide/http)
 - any free images hosting
 
-### [Features](#report-features)
+### Features
 
 - Movies List
    - List movies. **Done**, images lazy load, ordered alphabetically.
@@ -90,12 +92,12 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 - Filter by Genre. **Done**. Multiple genres supported.
 - Responsive designe. **Done**. Basic implementation of a bootstrap-like grid. Like `col-sm-12 col-md-6`, etc. Did not use 3d party lib on purpose, to demonstrate `scss`.
 - Animations. **Provided**
-- Not implemented:
+- **Not implemented**:
    - Unit tests.
    - Redux (however, I used it with react for a universal app).
    - Polished design.
 
-### [Angular Features](#report-angular-features)
+### Angular Features
 
 #### Intent
 
@@ -107,7 +109,7 @@ Movies list is being built by a generic images-grid component. Images-grid is fi
 
 Images-grid and its children interact with higher components via interfaces.
 
-Single image thumb builds a basic thumbnail, and uses [Dynamic Component Loading](https://angular.io/guide/dynamic-component-loader) to accommodate any customized footer (movie footer, game footer) to the thumbnail.
+**Example**. Single [image thumb](https://github.com/AlexeySolonenko/movie-picker/blob/e3040176e811b97588162f3a48f1252014cbce07/src/app/comps/grids/images-grid/single-thumb/single-thumb/single-thumb.component.ts#L48) builds a basic thumbnail, and uses [Dynamic Component Loading](https://angular.io/guide/dynamic-component-loader) to accommodate any customized footer (movie footer, game footer) to the thumbnail.
 
 #### Data Flow
 

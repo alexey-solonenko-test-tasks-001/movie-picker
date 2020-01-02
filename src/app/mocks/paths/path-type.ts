@@ -15,6 +15,9 @@ export interface Paths {
             /* for future extension&breadcrumbs, if required, */
             children?: {},
         },
+        moviesList: {
+
+        },
         moviesSingleMovie: {
             path: Path,
             /* for future extension&breadcrumbs, if required, */
