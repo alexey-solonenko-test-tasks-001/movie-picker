@@ -56,9 +56,11 @@ export class SingleThumbComponent implements OnInit {
     });
 
     (async () => {
+      // @ts-ignore: Unreachable code error
       let res = await this.http.get<Blob>(this.thumb.img, { responseType: 'blob' }).toPromise();
       const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
       await wait(Math.random() * 2000 + 350);
+      // @ts-ignore: Unreachable code error
       let urlCreator = window.URL || window.webkitURL;
       let objUrl = urlCreator.createObjectURL(res);
       this.imgSrc = this.sanitizer.bypassSecurityTrustUrl(objUrl);

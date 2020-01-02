@@ -3,7 +3,7 @@ import { SafeUrl } from '@angular/platform-browser';
 export interface ImgThumbModel {
     id: number,
     name: string,
-    img: string | SafeUrl,
+    img: SafeUrl | string,
     description?: string,
     detailUrl?: string,
 };

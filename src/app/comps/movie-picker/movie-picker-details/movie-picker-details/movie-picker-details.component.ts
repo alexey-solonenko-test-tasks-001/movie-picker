@@ -32,9 +32,11 @@ export class MoviePickerDetailsComponent implements OnInit {
     /* TODO to user router to level-up the movies component params */
     let movie = await this.http.get<Movie>(paths.api.getMovies.linkPath + '/' + id).toPromise();
     this.movie = movie;
+    // @ts-ignore: Unreachable code error
     let res = await this.http.get<Blob>(movie.img, { responseType: 'blob' }).toPromise();
     const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     await wait(Math.random() * 2000 + 350);
+    // @ts-ignore: Unreachable code error
     let urlCreator = window.URL || window.webkitURL;
     let objUrl = urlCreator.createObjectURL(res);
     this.movie.img = this.sanitizer.bypassSecurityTrustUrl(objUrl);
