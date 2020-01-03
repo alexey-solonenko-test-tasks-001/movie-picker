@@ -2,27 +2,36 @@ import { Paths } from './path-type';
 
 export const paths: Paths = {
     pages: {
-        moviesHome: {
+        home:{
+            path: {
+                routePath:'',
+                i18n:'Home',
+                linkPath: '/',
+            },
+        },
+        movies: {
             path: {
                 routePath: 'movies',
-                i18n: 'All Movies',
+                i18n: 'Movies page',
+                linkPath:'/movies',
+            },
+            children: {
+                list:{
+                    path: {
+                        routePath:'',
+                        i18n:'Movies List',
+                    }
+                },
+                detail: {
+                    path: {
+                        routePath: 'detail/:id',
+                        linkPath:'/movies/detail',
+                        i18n: 'Find Out More'
+                    }
+                }
             }
 
         },
-        moviesList:{
-            path: {
-                routePath:'list',
-                linkPath:'/list',
-                i18n:'Movies List',
-            }
-        },
-        moviesSingleMovie: {
-            path: {
-                routePath: 'detail/:id',
-                linkPath:'/detail',
-                i18n: 'Find Out More'
-            }
-        }
     },
     api: {
         getMovies: {

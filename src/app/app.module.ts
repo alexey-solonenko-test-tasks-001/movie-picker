@@ -21,6 +21,8 @@ import { ImgGridThumbAnnexDirective } from './comps/grids/images-grid/single-thu
 import { LiveSearchComponent } from './comps/live-search/live-search/live-search.component';
 import { MoviePickerGenresComponent } from './comps/movie-picker/movie-picker-genres/movie-picker-genres/movie-picker-genres.component';
 import { FormsModule } from '@angular/forms';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { HomeNavComponent } from './comps/home-nav/home-nav.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { FormsModule } from '@angular/forms';
     MoviePickerThumbAnnexComponent,
     ImgGridThumbAnnexDirective,
     LiveSearchComponent,
-    MoviePickerGenresComponent,    
+    MoviePickerGenresComponent,
+    HomePageComponent,
+    HomeNavComponent,    
   ],
   imports: [
     AppRoutingModule,

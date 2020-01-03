@@ -33,7 +33,7 @@ export class MoviePickerHomeComponent implements OnInit, AfterViewInit {
     private moviesService: MoviesService,
   ) {
     this.moviesService.initMoviesData(this.moviesDataId);
-    let detailsUrl = paths.pages.moviesSingleMovie.path.linkPath;
+    let detailsUrl = paths.pages.movies.children.detail.path.linkPath;
 
     /* Initialize config for a grid service */
     this.imagesGridService.addConfig(this.imagesGridId, {

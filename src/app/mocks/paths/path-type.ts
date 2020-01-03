@@ -1,6 +1,6 @@
 export interface Path {
     routePath?: string,
-    linkPath?:string,
+    linkPath?: string,
     /* TODO to provide a translations handler here  */
     i18n?: string,
 };
@@ -10,19 +10,27 @@ export interface Path {
  */
 export interface Paths {
     pages: {
-        moviesHome: {
+        home:{
+            path: Path,
+            children?:{},
+        },
+        movies: {
             path: Path,
             /* for future extension&breadcrumbs, if required, */
-            children?: {},
+            children?: {
+                list: {
+                    path: Path,
+                    /* for future extension&breadcrumbs, if required, */
+                    children?: {},
+                },
+                detail: {
+                    path: Path,
+                    /* for future extension&breadcrumbs, if required, */
+                    children?: {},
+                }
+            },
         },
-        moviesList: {
 
-        },
-        moviesSingleMovie: {
-            path: Path,
-            /* for future extension&breadcrumbs, if required, */
-            children?: {},
-        }
     },
     api: {
         getMovies: Path,
