@@ -89,7 +89,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
    - Browser navigation. **Done**.
 - Angular router support. **Done**.
 - Sass/scss. **Done**. Few example of scss usage: nesting, placeholders, mixins, etc.
-- Filter by Genre. **Done**. Multiple genres supported.
+- Filter by Genre. **Done+**. Multiple genres supported, clicking on a genre loads movies with that genre. Genres are resolved by a mock API and fetched upon page load.
 - Responsive designe. **Done**. Basic implementation of a bootstrap-like grid. Like `col-sm-12 col-md-6`, etc. Did not use 3d party lib on purpose, to demonstrate `scss`.
 - Use 3d party libs an components. **Sparingly**. Example - Ng-Select. Preferred to demonstrate more of react-specific and custom-made solutions.
 - Animations. **Provided**
@@ -120,5 +120,5 @@ As singletons, services attempt to be scalable in respect of the components they
 
 As much as I managed, data and blobs flow is async. Prolonged delays are intentional to demonstrate the asynchronicity.
 
-Routing and navigation paths are supposed to be initialized by SSR, thus they are hard-coded. 
+**Example**. [subjects and subscriptions](https://github.com/AlexeySolonenko/movie-picker/blob/master/src/app/services/movies/movies-service-types.ts#L6) used to handle dropdown update, 'store' update, navigation and data reloads. 
 
