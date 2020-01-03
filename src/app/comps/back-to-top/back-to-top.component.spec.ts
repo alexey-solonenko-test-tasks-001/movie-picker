@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MoviePickerHomeComponent } from './movie-picker-home.component';
+import { BackToTopComponent } from './back-to-top.component';
 
-describe('MoviePickerHomeComponent', () => {
-  let component: MoviePickerHomeComponent;
-  let fixture: ComponentFixture<MoviePickerHomeComponent>;
+describe('BackToTopComponent', () => {
+  let component: BackToTopComponent;
+  let fixture: ComponentFixture<BackToTopComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoviePickerHomeComponent ]
+      declarations: [ BackToTopComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MoviePickerHomeComponent);
+    fixture = TestBed.createComponent(BackToTopComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

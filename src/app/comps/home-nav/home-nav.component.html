@@ -1,12 +1,12 @@
-<nav class="topnav" [ngClass]='(showMenu ? "responseve" : "")' >
-    <a href='#' (click)='location.back()'> << </a>
-    <a routerLinkActive='active'
-    [routerLinkActiveOptions]="{exact:true}"
-        [routerLink]='paths.pages.home.path.linkPath'>{{ paths.pages.home.path.i18n }}</a>
-    <a routerLinkActive='active'
-    [routerLinkActiveOptions]="{exact:true}"
+<nav class="topnav" [ngClass]='(showMenu ? "responseve" : "")'>
+    <a href='#' (click)='location.back()'>
+        << </a> <a routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}"
+            [routerLink]='paths.pages.home.path.linkPath'>{{ paths.pages.home.path.i18n }}
+    </a>
+    <a routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}"
         [routerLink]='paths.pages.movies.path.linkPath'>{{ paths.pages.movies.path.i18n }}</a>
     <a class="icon" (click)="toggleMenu()">
-      <i class="fa fa-bars"></i>
+        <i class="fa fa-bars"></i>
     </a>
 </nav>
+<app-back-to-top></app-back-to-top>

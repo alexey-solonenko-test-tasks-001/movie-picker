@@ -30,6 +30,7 @@ export class SingleThumbComponent implements OnInit {
 
   @Input() annexComponentType: Type<ThumbAnnex>;
   @ViewChild(ImgGridThumbAnnexDirective, { static: true }) annexHost: ImgGridThumbAnnexDirective;
+  @Input() compId:string;
   imgSrc;
   loading: boolean = true;
   thumbLoader;
@@ -51,9 +52,7 @@ export class SingleThumbComponent implements OnInit {
 
     const annexHostCompRef = annexHostRef.createComponent(componentFactory);
     (annexHostCompRef.instance).thumb = this.thumb;
-    const headers = new HttpHeaders({
-
-    });
+    (annexHostCompRef.instance).compId = this.compId;
 
     (async () => {
       // @ts-ignore: Unreachable code error

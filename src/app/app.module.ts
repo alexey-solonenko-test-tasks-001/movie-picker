@@ -9,7 +9,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InMemoryDataService } from './mocks/in-memory-data-service/in-memory-data-service';
-import { MoviePickerHomeComponent } from './comps/movie-picker/movie-picker-home/movie-picker-home/movie-picker-home.component';
+import { MoviePickerListComponent } from './comps/movie-picker/movie-picker-list/movie-picker-list.component';
 import { MoviePickerDetailsComponent } from './comps/movie-picker/movie-picker-details/movie-picker-details/movie-picker-details.component';
 import { ImagesGridComponent } from './comps/grids/images-grid/images-grid/images-grid.component';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -23,12 +23,13 @@ import { MoviePickerGenresComponent } from './comps/movie-picker/movie-picker-ge
 import { FormsModule } from '@angular/forms';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { HomeNavComponent } from './comps/home-nav/home-nav.component';
+import { BackToTopComponent } from './comps/back-to-top/back-to-top.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoviePickerHomeComponent,
+    MoviePickerListComponent,
     MoviePickerDetailsComponent,
     ImagesGridComponent,
     SingleThumbComponent,
@@ -38,7 +39,8 @@ import { HomeNavComponent } from './comps/home-nav/home-nav.component';
     LiveSearchComponent,
     MoviePickerGenresComponent,
     HomePageComponent,
-    HomeNavComponent,    
+    HomeNavComponent,
+    BackToTopComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -47,11 +49,11 @@ import { HomeNavComponent } from './comps/home-nav/home-nav.component';
     FormsModule,
     HttpClientModule,
     // environment.production ? HttpClientInMemoryWebApiModule.forRoot(MoviesDataService, { delay: 400}) : [],
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000, dataEncapsulation: false, passThruUnknownUrl: true}),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000, dataEncapsulation: false, passThruUnknownUrl: true }),
     NgSelectModule,
-    
+
   ],
-  entryComponents:[MoviePickerThumbAnnexComponent],
+  entryComponents: [MoviePickerThumbAnnexComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

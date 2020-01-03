@@ -13,17 +13,18 @@ import { paths } from 'src/app/mocks/paths/paths';
 })
 export class MoviePickerDetailsComponent implements OnInit {
 
-  movie: Movie={id:-1,name:'',img:''};
+  movie: Movie = { id: -1, name: '', img: '' };
   loading: boolean = true;
 
   constructor(
     private sanitizer: DomSanitizer,
     private http: HttpClient,
     private route: ActivatedRoute,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-      this.getMovie();
+    this.getMovie();
   }
 
   async getMovie() {

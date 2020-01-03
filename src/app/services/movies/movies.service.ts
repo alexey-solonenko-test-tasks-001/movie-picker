@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { LiveSearchService } from '../live-search/live-search.service';
 import { ImagesGridService } from '../images-grid/images-grid.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { MoviesServiceComponentData } from './movies-service-types';
 
 @Injectable({
@@ -13,6 +13,7 @@ import { MoviesServiceComponentData } from './movies-service-types';
 })
 export class MoviesService implements QueryUrlBuilder {
 
+  private genresPusher: Subject<string[]>;
   private moviesApiUrl: string = '';
   private moviesData: Map<string, MoviesServiceComponentData> = new Map();
 
@@ -67,6 +68,8 @@ export class MoviesService implements QueryUrlBuilder {
   initMoviesData(moviesCompId: string): void {
     if (!this.getMoviesData(moviesCompId)) {
       this.moviesData.set(moviesCompId, {});
+      this.moviesData.get(moviesCompId).genresDispatcher = new Subject<string[]>();
+      this.moviesData.get(moviesCompId).listReloader = new Subject<boolean>();
     }
   }
 
@@ -78,6 +81,13 @@ export class MoviesService implements QueryUrlBuilder {
   updateGenres(clientId: string, data: string[]) {
     if (this.getMoviesData(clientId)) {
       this.getMoviesData(clientId).genres = data;
+    }
+  }
+
+  pushGenres(clientId: string, data: string[]):void{
+    if (this.getMoviesData(clientId)) {
+      let data = this.getMoviesData(clientId);
+
     }
   }
 

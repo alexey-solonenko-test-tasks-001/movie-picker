@@ -22,7 +22,18 @@ export class MoviePickerGenresComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    /* Subscribe to external changes of selected genres */
+    let moviesData = this.moviesService.getMoviesData(this.moviesDataId);
+    moviesData.genresDispatcher.subscribe(genres => {
+        this.selectedGenres = genres;
+        this.updateGenres(genres);
+        moviesData.listReloader.next(true);
+    })
     this.getGenres();
+    if(this.moviesService.getMoviesData(this.moviesDataId).genres){
+      this.selectedGenres = this.moviesService.getMoviesData(this.moviesDataId).genres;
+    } 
+
   }
 
   getGenres(): void {

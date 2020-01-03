@@ -91,6 +91,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 - Sass/scss. **Done**. Few example of scss usage: nesting, placeholders, mixins, etc.
 - Filter by Genre. **Done**. Multiple genres supported.
 - Responsive designe. **Done**. Basic implementation of a bootstrap-like grid. Like `col-sm-12 col-md-6`, etc. Did not use 3d party lib on purpose, to demonstrate `scss`.
+- Use 3d party libs an components. **Sparingly**. Example - Ng-Select. Preferred to demonstrate more of react-specific and custom-made solutions.
 - Animations. **Provided**
 - **Not implemented**:
    - Unit tests.

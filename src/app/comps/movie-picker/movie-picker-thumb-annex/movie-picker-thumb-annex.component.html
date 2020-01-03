@@ -1,5 +1,5 @@
 <div class='row'>
-    <div class='col-12'><span class='movie-picker-thumb-annex__genre' *ngFor='let genre of thumb.genres'>{{ genre }}</span></div>
+    <div class='col-12'><span class='movie-picker-thumb-annex__genre' *ngFor='let genre of thumb.genres' (click)='goToList(genre)'>{{ genre }}</span></div>
     <div class='col-5 col-md-3'>
         <div class='movie-picker-thumb-annex__rate-border'><span
                 class='movie-picker-thumb-annex__rate'>{{ thumb.rate }}</span></div>

@@ -1,17 +1,19 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { ImagesGridService } from 'src/app/services/images-grid/images-grid.service';
-import { MoviePickerThumbAnnexComponent } from '../../movie-picker-thumb-annex/movie-picker-thumb-annex.component';
+import { MoviePickerThumbAnnexComponent } from '../movie-picker-thumb-annex/movie-picker-thumb-annex.component';
 import { MoviesService } from 'src/app/services/movies/movies.service';
 import { paths } from 'src/app/mocks/paths/paths';
 import { LiveSearchService } from 'src/app/services/live-search/live-search.service';
 import { ImagesGridComponent } from 'src/app/comps/grids/images-grid/images-grid/images-grid.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-movie-picker-home',
-  templateUrl: './movie-picker-home.component.html',
-  styleUrls: ['./movie-picker-home.component.scss']
+  templateUrl: './movie-picker-list.component.html',
+  styleUrls: ['./movie-picker-list.component.scss']
 })
-export class MoviePickerHomeComponent implements OnInit, AfterViewInit {
+export class MoviePickerListComponent implements OnInit, AfterViewInit {
 
   /* Ids of the reusable shared components we are going to plug into our movie picker */
   imagesGridId: string= 'movies-images-grid';
@@ -28,11 +30,15 @@ export class MoviePickerHomeComponent implements OnInit, AfterViewInit {
   selectedGenres: string[] = [];
 
   constructor(
+    private actRoute: ActivatedRoute,
     private imagesGridService: ImagesGridService,
     private liveSearchService: LiveSearchService,
+    private ngLocation:Location,
     private moviesService: MoviesService,
   ) {
+    /* Init a unique per component set of shared data  */
     this.moviesService.initMoviesData(this.moviesDataId);
+
     let detailsUrl = paths.pages.movies.children.detail.path.linkPath;
 
     /* Initialize config for a grid service */
@@ -52,13 +58,21 @@ export class MoviePickerHomeComponent implements OnInit, AfterViewInit {
       updater: this.moviesService,
     });
 
+   
+    
   }
 
   ngOnInit() {
+    let queryParams = this.actRoute.snapshot.queryParams;
+    if(queryParams.genre){
+      this.moviesService.getMoviesData(this.moviesDataId).genresDispatcher.next([queryParams.genre]);
+      this.ngLocation.replaceState(window.location.pathname);
+    }
   }
 
   ngAfterViewInit() {
-   
+    /* This event somes from manual clicking on genres while on movies list page */
+    this.moviesService.getMoviesData(this.moviesDataId).listReloader.subscribe(_ => this.imagesGridComp.getThumbs());
   }
 
   search(): void {
