@@ -31,7 +31,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Deployed App
 
-Deployed on <a href="https://asolonenko-movie-picker.herokuapp.com/" target="_blank">`heroku`</a>
+Deployed on <a href="https://asolonenko-movie-picker.herokuapp.com/movies" target="_blank">`heroku`</a>
 
 ### Local Prod
 
